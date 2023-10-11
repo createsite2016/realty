@@ -7,6 +7,7 @@ use App\MoonShine\Resources\AmenitieResource;
 use App\MoonShine\Resources\CityResource;
 use App\MoonShine\Resources\CountryResource;
 use App\MoonShine\Resources\CurrencyResource;
+use App\MoonShine\Resources\PropertyResource;
 use App\MoonShine\Resources\PropertyTypeResource;
 use Illuminate\Support\ServiceProvider;
 use MoonShine\MoonShine;
@@ -26,6 +27,7 @@ class MoonShineServiceProvider extends ServiceProvider
             MenuItem::make('Валюта', new CurrencyResource()),
             MenuItem::make('Тип недвижимости', new PropertyTypeResource()),
             MenuItem::make('Города', new CityResource()),
+            MenuItem::make('Объекты', new PropertyResource()),
         ]);
     }
 }
