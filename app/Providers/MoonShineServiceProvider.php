@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Models\Country;
 use App\MoonShine\Resources\AmenitieResource;
+use App\MoonShine\Resources\CountryResource;
 use Illuminate\Support\ServiceProvider;
 use MoonShine\MoonShine;
 use MoonShine\Menu\MenuItem;
@@ -17,6 +19,7 @@ class MoonShineServiceProvider extends ServiceProvider
             MenuItem::make('Пользователи', new MoonShineUserResource()),
             MenuItem::make('Роли', new MoonShineUserRoleResource()),
             MenuItem::make('Удобства', new AmenitieResource()),
+            MenuItem::make('Страна', new CountryResource()),
         ]);
     }
 }
