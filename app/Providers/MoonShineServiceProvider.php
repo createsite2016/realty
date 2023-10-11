@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Country;
 use App\MoonShine\Resources\AmenitieResource;
+use App\MoonShine\Resources\CityResource;
 use App\MoonShine\Resources\CountryResource;
 use App\MoonShine\Resources\CurrencyResource;
 use App\MoonShine\Resources\PropertyTypeResource;
@@ -24,6 +25,7 @@ class MoonShineServiceProvider extends ServiceProvider
             MenuItem::make('Страна', new CountryResource()),
             MenuItem::make('Валюта', new CurrencyResource()),
             MenuItem::make('Тип недвижимости', new PropertyTypeResource()),
+            MenuItem::make('Города', new CityResource()),
         ]);
     }
 }
