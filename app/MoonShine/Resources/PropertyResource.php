@@ -3,6 +3,7 @@
 namespace App\MoonShine\Resources;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use App\Models\Property;
 
 use MoonShine\Fields\BelongsTo;
@@ -72,5 +73,15 @@ class PropertyResource extends Resource
         return [
             FiltersAction::make(trans('moonshine::ui.filters')),
         ];
+    }
+
+    public function query(): Builder
+    {
+        if(auth()->user()->moonshine_user_role_id !== 1) // если пользователь не админ
+        {
+            return parent::query()
+                ->where('user_id', auth()->user()->getAuthIdentifier());
+        }
+        return parent::query();
     }
 }
