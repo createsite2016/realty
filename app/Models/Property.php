@@ -39,4 +39,9 @@ class Property extends Model
     {
         return $this->belongsTo(City::class);
     }
+
+    public function amenitie()
+    {
+        return $this->belongsToMany(Amenitie::class, 'property_amenity', 'property_id', 'amenity_id');
+    }
 }

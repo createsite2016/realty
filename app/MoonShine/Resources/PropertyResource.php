@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Property;
 
 use MoonShine\Fields\BelongsTo;
+use MoonShine\Fields\BelongsToMany;
 use MoonShine\Fields\Image;
 use MoonShine\Fields\Number;
 use MoonShine\Fields\SwitchBoolean;
@@ -38,6 +39,7 @@ class PropertyResource extends Resource
             Textarea::make('Адрес', 'address'),
             Text::make('Широта', 'gps_latitude'),
             Text::make('Долгота', 'gps_longitude'),
+            BelongsToMany::make('Удобства', 'amenitie', static fn($amenity) => $amenity->amenity_name)->showOnIndex(),
             SwitchBoolean::make('Опубликовать', 'is_published')
                 ->onValue(1) // Активное значение элемента формы
                 ->offValue(0), // Неактивное значение элемента формы

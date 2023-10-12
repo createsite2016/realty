@@ -16,6 +16,8 @@ class AmenitieResource extends Resource
 
 	public static string $title = 'Удобства';
 
+    public string $titleField = 'amenity_name';
+
 	public function fields(): array
 	{
 		return [
