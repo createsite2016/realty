@@ -27,7 +27,7 @@ class PropertyResource extends Resource
 	{
 		return [
 		    ID::make()->sortable(),
-            BelongsTo::make('Пользователь', 'user', 'name'),
+            BelongsTo::make('Пользователь', 'user', 'name')->default(auth()->user()->id)->hideOnCreate()->hideOnCreate(),
             BelongsTo::make('Тип объекта', 'propertyType', 'type_name'),
             Text::make('Заголовок', 'title'),
             Number::make('Комнаты', 'rooms')->min(1),
@@ -77,10 +77,10 @@ class PropertyResource extends Resource
 
     public function query(): Builder
     {
-        if(auth()->user()->moonshine_user_role_id !== 1) // если пользователь не админ
+        if(auth()->user()->role->id !== 1) // если пользователь не админ
         {
             return parent::query()
-                ->where('user_id', auth()->user()->getAuthIdentifier());
+                ->where('user_id', auth()->user()->id);
         }
         return parent::query();
     }
