@@ -13,7 +13,7 @@ return [
     'logo_small' => env('MOONSHINE_LOGO_SMALL'),
 
     'route' => [
-        'prefix' => env('MOONSHINE_ROUTE_PREFIX', 'admin'),
+        'prefix' => env('MOONSHINE_ROUTE_PREFIX', 'home'),
         'index_route' => env('MOONSHINE_INDEX_ROUTE', 'moonshine.index'),
         'middleware' => ['moonshine'],
         'custom_page_slug' => 'custom_page',
@@ -29,11 +29,11 @@ return [
             'name' => 'name',
             'avatar' => 'avatar',
         ],
-        'guard' => 'moonshine',
+        'guard' => 'web',
         'guards' => [
             'moonshine' => [
-                'driver' => 'session',
-                'provider' => 'moonshine',
+                'guard' => 'web',
+                'passwords' => 'users',
             ],
         ],
         'providers' => [
@@ -42,7 +42,7 @@ return [
                 'model' => User::class,
             ],
         ],
-        'footer' => '',
+        'footer' => '<a href="/password/reset">Забыли пароль</a><br><a href="/register">Регистрация</a>',
     ],
     'locales' => [
         'ru',
