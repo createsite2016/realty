@@ -1,0 +1,510 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "My Doc API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/": {},
+        "/api/properties": {
+            "post": {
+                "tags": [
+                    "properties"
+                ],
+                "summary": "Создать объект",
+                "requestBody": {
+                    "content": {
+                        "multipart/form-data": {
+                            "schema": {
+                                "required": [
+                                    "user_id",
+                                    "property_type_id",
+                                    "currency_id",
+                                    "country_id",
+                                    "city_id"
+                                ],
+                                "properties": {
+                                    "user_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "property_type_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "title": {
+                                        "type": "string",
+                                        "example": "Квартира 60кв"
+                                    },
+                                    "rooms": {
+                                        "type": "integer",
+                                        "example": "3"
+                                    },
+                                    "description": {
+                                        "type": "string",
+                                        "example": "Просторная трёшка"
+                                    },
+                                    "realtor_comment": {
+                                        "type": "string",
+                                        "example": "Норм квартира"
+                                    },
+                                    "price": {
+                                        "type": "integer",
+                                        "example": "10000"
+                                    },
+                                    "currency_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "country_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "city_id": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "address": {
+                                        "type": "string",
+                                        "example": "улица Пушкина, дом Тарахтушкина 15"
+                                    },
+                                    "gps_latitude": {
+                                        "type": "decimal:9:6",
+                                        "example": 45.0448
+                                    },
+                                    "gps_longitude": {
+                                        "type": "integer",
+                                        "example": 45.0448
+                                    },
+                                    "is_published": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "photos[]": {
+                                        "description": "file to upload",
+                                        "type": "string",
+                                        "format": "binary"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "property_type_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Квартира 60кв"
+                                                    },
+                                                    "rooms": {
+                                                        "type": "integer",
+                                                        "example": "3"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Просторная трёшка"
+                                                    },
+                                                    "realtor_comment": {
+                                                        "type": "string",
+                                                        "example": "Норм квартира"
+                                                    },
+                                                    "price": {
+                                                        "type": "integer",
+                                                        "example": "10000"
+                                                    },
+                                                    "currency_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "country_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "city_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "address": {
+                                                        "type": "string",
+                                                        "example": "улица Пушкина, дом Тарахтушкина 15"
+                                                    },
+                                                    "gps_latitude": {
+                                                        "type": "integer",
+                                                        "example": "45.044800"
+                                                    },
+                                                    "gps_longitude": {
+                                                        "type": "integer",
+                                                        "example": "45.044800"
+                                                    },
+                                                    "photos": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "oneOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "example": "htrx9Q1vUGoB002MbWCNQIhdTLsBkxkLuDmlwia1.png"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "example": "9lln6bKTi0qb9YzN5iUkqzp0dCdbYKIJew7qyJkD.png"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "date_added": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-12 09:31:25"
+                                                    },
+                                                    "is_published": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-13T12:39:26.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-13T12:39:26.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/properties/": {
+            "get": {
+                "tags": [
+                    "properties"
+                ],
+                "summary": "Получить все объекты",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "property_type_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Квартира 60кв"
+                                                    },
+                                                    "rooms": {
+                                                        "type": "integer",
+                                                        "example": "3"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Просторная трёшка"
+                                                    },
+                                                    "realtor_comment": {
+                                                        "type": "string",
+                                                        "example": "Норм квартира"
+                                                    },
+                                                    "price": {
+                                                        "type": "integer",
+                                                        "example": "10000"
+                                                    },
+                                                    "currency_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "country_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "city_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "address": {
+                                                        "type": "string",
+                                                        "example": "улица Пушкина, дом Тарахтушкина 15"
+                                                    },
+                                                    "gps_latitude": {
+                                                        "type": "integer",
+                                                        "example": "45.044800"
+                                                    },
+                                                    "gps_longitude": {
+                                                        "type": "integer",
+                                                        "example": "45.044800"
+                                                    },
+                                                    "photos": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "oneOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "example": "htrx9Q1vUGoB002MbWCNQIhdTLsBkxkLuDmlwia1.png"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "example": "9lln6bKTi0qb9YzN5iUkqzp0dCdbYKIJew7qyJkD.png"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "date_added": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-12 09:31:25"
+                                                    },
+                                                    "is_published": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-13T12:39:26.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-13T12:39:26.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/properties/{property}": {
+            "get": {
+                "tags": [
+                    "properties"
+                ],
+                "summary": "Получить один объект",
+                "parameters": [
+                    {
+                        "name": "property",
+                        "in": "path",
+                        "description": "ID объекта",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "user_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "property_type_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "title": {
+                                                        "type": "string",
+                                                        "example": "Квартира 60кв"
+                                                    },
+                                                    "rooms": {
+                                                        "type": "integer",
+                                                        "example": "3"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "example": "Просторная трёшка"
+                                                    },
+                                                    "realtor_comment": {
+                                                        "type": "string",
+                                                        "example": "Норм квартира"
+                                                    },
+                                                    "price": {
+                                                        "type": "integer",
+                                                        "example": "10000"
+                                                    },
+                                                    "currency_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "country_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "city_id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "address": {
+                                                        "type": "string",
+                                                        "example": "улица Пушкина, дом Тарахтушкина 15"
+                                                    },
+                                                    "gps_latitude": {
+                                                        "type": "integer",
+                                                        "example": "45.044800"
+                                                    },
+                                                    "gps_longitude": {
+                                                        "type": "integer",
+                                                        "example": "45.044800"
+                                                    },
+                                                    "photos": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "oneOf": [
+                                                                {
+                                                                    "type": "string",
+                                                                    "example": "htrx9Q1vUGoB002MbWCNQIhdTLsBkxkLuDmlwia1.png"
+                                                                },
+                                                                {
+                                                                    "type": "string",
+                                                                    "example": "9lln6bKTi0qb9YzN5iUkqzp0dCdbYKIJew7qyJkD.png"
+                                                                }
+                                                            ]
+                                                        }
+                                                    },
+                                                    "date_added": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-12 09:31:25"
+                                                    },
+                                                    "is_published": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-13T12:39:26.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-13T12:39:26.000000Z"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "properties"
+                ],
+                "summary": "Удалить объект",
+                "parameters": [
+                    {
+                        "name": "property",
+                        "in": "path",
+                        "description": "ID объекта",
+                        "required": true,
+                        "example": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "done"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer"
+            }
+        }
+    }
+}

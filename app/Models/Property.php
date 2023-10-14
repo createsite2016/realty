@@ -10,6 +10,8 @@ class Property extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     protected $casts = [
         'photos' => 'collection'
     ];

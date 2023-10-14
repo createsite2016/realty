@@ -20,13 +20,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
+Route::group(['middleware' => 'api', 'prefix' => 'auth'], static function () {
     Route::post('login', [AuthController::class, 'login']);
     Route::post('logout', [AuthController::class, 'logout']);
     Route::post('refresh', [AuthController::class, 'refresh']);
+    Route::post('/register', [AuthController::class, 'register']);
     Route::post('me', [AuthController::class, 'me']);
 });
 
-Route::group(['middleware' => 'api', 'prefix' => 'property'], function ($router) {
-    Route::get('getAll', [PropertyController::class, 'index']);
+Route::group(['middleware' => ['api','jwt.auth'], 'prefix' => 'properties'], static function () {
+    Route::post('/', [PropertyController::class, 'store'])->name('properties.store');
+    Route::get('/', [PropertyController::class, 'index'])->name('properties.index');
+    Route::get('/{property}', [PropertyController::class, 'show'])->name('properties.show');
+    Route::delete('/{property}', [PropertyController::class, 'destroy']);
 });
