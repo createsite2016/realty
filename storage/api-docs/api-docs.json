@@ -6,6 +6,277 @@
     },
     "paths": {
         "/api/": {},
+        "/api/auth/login?email={email}&password={password}": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Авторизация",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "path",
+                        "description": "email пользователя",
+                        "required": true,
+                        "example": "z@z.ru"
+                    },
+                    {
+                        "name": "password",
+                        "in": "path",
+                        "description": "email пользователя",
+                        "required": true,
+                        "example": "12341234"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "uierjioerj4"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "bearer"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer",
+                                            "example": "3600"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/auth/me": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Получить данные по токену пользователя",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "name": {
+                                            "type": "string",
+                                            "example": "Ivan"
+                                        },
+                                        "email": {
+                                            "type": "string",
+                                            "example": "a@a.ru"
+                                        },
+                                        "email_verified_at": {
+                                            "type": "string",
+                                            "example": null
+                                        },
+                                        "created_at": {
+                                            "type": "date-time",
+                                            "example": "2023-10-13T14:49:20.000000Z"
+                                        },
+                                        "updated_at": {
+                                            "type": "date-time",
+                                            "example": "2023-10-13T14:49:20.000000Z"
+                                        },
+                                        "role_id": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "telegram_id": {
+                                            "type": "string",
+                                            "example": "1234567"
+                                        },
+                                        "phone_number": {
+                                            "type": "string",
+                                            "example": "89991111111"
+                                        },
+                                        "is_active": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "api_token": {
+                                            "type": "string",
+                                            "example": "1234567"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/refresh": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Получить обновлённый токен",
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "access_token": {
+                                            "type": "string",
+                                            "example": "uierjioerj4"
+                                        },
+                                        "token_type": {
+                                            "type": "string",
+                                            "example": "bearer"
+                                        },
+                                        "expires_in": {
+                                            "type": "integer",
+                                            "example": "3600"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/auth/register": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Регистрация пользователя",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "email",
+                                    "password",
+                                    "password_confirmation",
+                                    "name"
+                                ],
+                                "properties": {
+                                    "email": {
+                                        "type": "string",
+                                        "example": "z@z.ru"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "example": "12341234"
+                                    },
+                                    "password_confirmation": {
+                                        "type": "string",
+                                        "example": "12341234"
+                                    },
+                                    "name": {
+                                        "type": "string",
+                                        "example": "Иван"
+                                    },
+                                    "telegram_id": {
+                                        "type": "string",
+                                        "example": "203948923"
+                                    },
+                                    "phone_number": {
+                                        "type": "string",
+                                        "example": "89991111111"
+                                    },
+                                    "is_active": {
+                                        "type": "integer",
+                                        "example": "1"
+                                    },
+                                    "api_token": {
+                                        "type": "string",
+                                        "example": "j2d9jd39"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "ok",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "string",
+                                            "example": "success"
+                                        },
+                                        "code": {
+                                            "type": "integer",
+                                            "example": "1"
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Users successfully registered"
+                                        },
+                                        "data": {
+                                            "type": "array",
+                                            "items": {
+                                                "properties": {
+                                                    "email": {
+                                                        "type": "string",
+                                                        "example": "a@a.ru"
+                                                    },
+                                                    "name": {
+                                                        "type": "string",
+                                                        "example": "Ivan"
+                                                    },
+                                                    "created_at": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-13T12:39:26.000000Z"
+                                                    },
+                                                    "updated_at": {
+                                                        "type": "date-time",
+                                                        "example": "2023-10-13T12:39:26.000000Z"
+                                                    },
+                                                    "id": {
+                                                        "type": "integer",
+                                                        "example": "1"
+                                                    }
+                                                },
+                                                "type": "object"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/api/properties": {
             "post": {
                 "tags": [
