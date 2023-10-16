@@ -7,6 +7,7 @@ use App\Models\User;
 
 use MoonShine\Fields\BelongsTo;
 use MoonShine\Fields\Password;
+use MoonShine\Fields\SwitchBoolean;
 use MoonShine\Fields\Text;
 use MoonShine\Resources\MoonShineUserRoleResource;
 use MoonShine\Resources\Resource;
@@ -25,6 +26,12 @@ class UserResource extends Resource
 		    ID::make()->sortable(),
             Text::make('Имя', 'name'),
             Text::make('Email', 'email'),
+            Text::make('Телеграмм ID', 'telegram_id'),
+            Text::make('Номер телефона', 'phone_number'),
+            Text::make('API токен', 'api_token'),
+            SwitchBoolean::make('Активность', 'is_active')
+                ->onValue(1) // Активное значение элемента формы
+                ->offValue(0), // Неактивное значение элемента формы
             Password::make('Пароль', 'password'),
             BelongsTo::make('Роль', 'role', 'role_name'),
         ];
